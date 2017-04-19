@@ -11,6 +11,10 @@ import com.orhanobut.logger.Logger;
 import com.zgh.appdevtemplate.activity.SplashActivity;
 import com.zgh.appdevtemplate.utils.LogUtil;
 
+import cn.jpush.android.api.JPushInterface;
+
+import static com.bumptech.glide.gifdecoder.GifHeaderParser.TAG;
+
 /**
  * Created by ZGH on 2017/4/17.
  */
@@ -28,9 +32,15 @@ public class MyApplication extends Application {
         super.onCreate();
 
         mContext = getApplicationContext();
+        //极光推送初始化
+        LogUtils.d(TAG, "[MyApplication] onCreate");
+        JPushInterface.setDebugMode(isDebug);    // 设置开启日志,发布时请关闭日志
+        JPushInterface.init(this);            // 初始化 JPush
         // Logger初始化配置
         Logger.init("凯捷").methodCount(1).methodOffset(1).hideThreadInfo();
+        //Utils库初始化
         Utils.init(mContext);
+
         if (log_on) {
             log_on = false;
             //全局log日志开关
