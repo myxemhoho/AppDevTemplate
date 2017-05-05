@@ -9,12 +9,15 @@ Android 快速开发模版。
     2. 详细依赖方法及注意点可以看 [这里](http://blog.csdn.net/zgh0711/article/details/70948532)
     3. 在项目根目录的 build.gradle 文件中添加 maven 库支持，因为引入了一个 recyclerView 的库
 
-        `allprojects {
+
+        ```
+        allprojects {
              repositories {
                  jcenter()
                  maven { url "https://jitpack.io" }
              }
-         }`
+         }
+         ```
 
     4. 将应用的 minSdkVersion 设为 19 及以上，不然会和另一个设置状态栏颜色的库相冲突。
 
