@@ -12,12 +12,12 @@ import java.io.UnsupportedEncodingException;
 
 /**
  * <p>
- * Base64 encoding and decoding utility methods, both for binary and textual
+ * MyBase64 encoding and decoding utility methods, both for binary and textual
  * informations.
  * </p>
  * 
  */
-public class Base64 {
+public class MyBase64 {
 	static String chars = "01234AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz56789+/";
 	static char   pad   = '=';
 
@@ -26,7 +26,7 @@ public class Base64 {
 	 * Encodes a string.
 	 * </p>
 	 * <p>
-	 * Before the string is encoded in Base64, it is converted in a binary
+	 * Before the string is encoded in MyBase64, it is converted in a binary
 	 * sequence using the system default charset.
 	 * </p>
 	 * 
@@ -51,7 +51,7 @@ public class Base64 {
 	 * Encodes a string.
 	 * </p>
 	 * <p>
-	 * Before the string is encoded in Base64, it is converted in a binary
+	 * Before the string is encoded in MyBase64, it is converted in a binary
 	 * sequence using the supplied charset.
 	 * </p>
 	 * 
@@ -343,7 +343,7 @@ public class Base64 {
 		try {
 			inputStream = new FileInputStream(source);
 			outputStream = new FileOutputStream(target);
-			Base64.encode(inputStream, outputStream, wrapAt);
+			MyBase64.encode(inputStream, outputStream, wrapAt);
 		} finally {
 			if (outputStream != null) {
 				try {
@@ -380,7 +380,7 @@ public class Base64 {
 		try {
 			inputStream = new FileInputStream(source);
 			outputStream = new FileOutputStream(target);
-			Base64.encode(inputStream, outputStream);
+			MyBase64.encode(inputStream, outputStream);
 		} finally {
 			if (outputStream != null) {
 				try {

@@ -65,7 +65,7 @@ public abstract class HttpHandler extends TextHttpResponseHandler {
                     //如果是正式环境，data是加密过的，是一个字符串，先强转为字符串，再解密，再传出去使用
                     if (object != null) {
                         String data = (String) object;
-                        json = Base64.decode(data);
+                        json = MyBase64.decode(data);
                         onSuccess(statusCode, requestCode, json);
                         log("成功", statusCode, requestCode, json);
                     }else {

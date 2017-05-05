@@ -108,10 +108,10 @@ public class Base64OutputStream extends OutputStream {
 				outputStream.write("\r\n".getBytes());
 				linecounter = 0;
 			}
-			char b1 = Base64.chars.charAt((buffer << 8) >>> 26);
-			char b2 = Base64.chars.charAt((buffer << 14) >>> 26);
-			char b3 = (bytecounter < 2) ? Base64.pad : Base64.chars.charAt((buffer << 20) >>> 26);
-			char b4 = (bytecounter < 3) ? Base64.pad : Base64.chars.charAt((buffer << 26) >>> 26);
+			char b1 = MyBase64.chars.charAt((buffer << 8) >>> 26);
+			char b2 = MyBase64.chars.charAt((buffer << 14) >>> 26);
+			char b3 = (bytecounter < 2) ? MyBase64.pad : MyBase64.chars.charAt((buffer << 20) >>> 26);
+			char b4 = (bytecounter < 3) ? MyBase64.pad : MyBase64.chars.charAt((buffer << 26) >>> 26);
 			outputStream.write(b1);
 			outputStream.write(b2);
 			outputStream.write(b3);

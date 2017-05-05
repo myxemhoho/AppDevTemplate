@@ -14,7 +14,7 @@ import android.widget.TextView;
  * 开发中需要用到的工具类
  */
 
-public class DevUtils {
+public class DevelopUtils {
     /**
      * 判断按钮是否点击过快
      */

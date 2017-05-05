@@ -3,188 +3,217 @@ package com.zgh.appdevtemplate.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.blankj.utilcode.util.Utils;
+
 import java.util.Map;
 
 /**
- * 
- * @author woods
- * 
+ * SP 相关工具类
  */
 public class SPUtils {
-    /**
-     * 保存在手机里面的文件名
-     */
-    public static final String FILE_NAME = "share_data";
 
-	public SPUtils() {
-
-	}
-
-	public static void setSharePre(Context context, String key, String value) {
-		setSharePre(context, FILE_NAME, key, value);
-	}
-
-	public static void setBooleanSharePre(Context context, String key, boolean value) {
-		setBooleanSharePre(context, FILE_NAME, key, value);
-	}
-
-	public static void setSharePre(Context context, String key, int value) {
-		setSharePre(context, FILE_NAME, key, value);
-	}
-
-	public static String getStrSharePre(Context context, String key) {
-		return getStrSharePre(context, FILE_NAME, key);
-	}
-
-	public static boolean getBooleanSharePre(Context context, String key) {
-		return getBooleanSharePre(context, FILE_NAME, key);
-	}
-
-	public static int getIntSharePre(Context context, String key) {
-		return getIntSharePre(context, FILE_NAME, key);
-	}
-
-    public static boolean clearSharePre(Context context) {
-        return clearSharePre(context, FILE_NAME);
-    }
-
-    public static boolean clearSharePreKey(Context context,String key) {
-        return clearSharePre(context, FILE_NAME,key);
-    }
-
-    public static boolean contains(Context context, String key) {
-        return contains(context, FILE_NAME, key);
-    }
-
-    public static Map<String, ?> getAll(Context context) {
-        return getAll(context, FILE_NAME);
-    }
+    private SharedPreferences        sp;
+    private SharedPreferences.Editor editor;
 
     /**
-	 * 写入Android共享存储
-	 * 
-	 * @param context
-	 *            上下文
-	 * @param fileName
-	 *            文件名
-	 * @param key
-	 *            键
-	 * @param value
-	 *            值
-	 */
-	private static void setSharePre(Context context, String fileName, String key, String value) {
-		SharedPreferences pre = context.getSharedPreferences(fileName, Context.MODE_PRIVATE);
-		SharedPreferences.Editor editor = pre.edit();
-		editor.putString(key, value);
-		editor.apply();
-//		editor.commit();
-	}
-
-	private static void setBooleanSharePre(Context context, String fileName, String key, boolean value) {
-		SharedPreferences pre = context.getSharedPreferences(fileName, Context.MODE_PRIVATE);
-		SharedPreferences.Editor editor = pre.edit();
-		editor.putBoolean(key, value);
-		editor.apply();
-//		editor.commit();
-	}
-
-	/**
-	 * 写入Android共享存储
-	 * 
-	 * @param context
-	 *            上下文
-	 * @param fileName
-	 *            文件名
-	 * @param key
-	 *            键
-	 * @param value
-	 *            值
-	 */
-	private static void setSharePre(Context context, String fileName, String key, int value) {
-		SharedPreferences pre = context.getSharedPreferences(fileName, Context.MODE_PRIVATE);
-		SharedPreferences.Editor editor = pre.edit();
-		editor.putInt(key, value);
-		editor.apply();
-//		editor.commit();
-	}
-
-	/**
-	 * 读取Android共享存储
-	 * 
-	 * @param context
-	 *            上下文
-	 * @param key
-	 *            键
-	 */
-	private static String getStrSharePre(Context context, String fileName, String key) {
-		SharedPreferences pre = context.getSharedPreferences(fileName, Context.MODE_PRIVATE);
-        return pre.getString(key, "");
-	}
-
-	private static boolean getBooleanSharePre(Context context, String fileName, String key) {
-		SharedPreferences pre = context.getSharedPreferences(fileName, Context.MODE_PRIVATE);
-        return pre.getBoolean(key, false);
-	}
-
-	/**
-	 * 读取Android共享存储
-	 * 
-	 * @param context
-	 *            上下文
-	 * @param key
-	 *            键
-	 */
-	private static int getIntSharePre(Context context, String fileName, String key) {
-		SharedPreferences pre = context.getSharedPreferences(fileName, Context.MODE_PRIVATE);
-        return pre.getInt(key, 0);
-	}
-
-	/**
-	 * 清除SharePre
-	 * 
-	 * @param context
-	 * @param fileName
-	 * @param key
-	 */
-	public static boolean clearSharePre(Context context, String fileName, String key) {
-		SharedPreferences pre = context.getSharedPreferences(fileName, Context.MODE_PRIVATE);
-		SharedPreferences.Editor editor = pre.edit();
-		editor.remove(key);
-		return editor.commit();
-	}
-
-	/**
-	 * 清除SharePre
-	 * 
-	 * @param context
-	 * @param fileName
-	 */
-	public static boolean clearSharePre(Context context, String fileName) {
-		SharedPreferences pre = context.getSharedPreferences(fileName, Context.MODE_PRIVATE);
-		SharedPreferences.Editor editor = pre.edit();
-		return editor.clear().commit();
-	}
-
-    /**
-     * 查询某个key是否已经存在
+     * SPUtils构造函数
+     * <p>在Application中初始化</p>
      *
-     * @param context
-     * @param key
-     * @return
+     * @param spName  spName
      */
-    private static boolean contains(Context context,String fileName, String key) {
-        SharedPreferences sp = context.getSharedPreferences(fileName, Context.MODE_PRIVATE);
+    public SPUtils(String spName) {
+        sp = Utils.getContext().getSharedPreferences(spName, Context.MODE_PRIVATE);
+        editor = sp.edit();
+        editor.apply();
+    }
+
+    /**
+     * SP中写入String类型value
+     *
+     * @param key   键
+     * @param value 值
+     */
+    public void putString(String key, String value) {
+        editor.putString(key, value).apply();
+    }
+
+    /**
+     * SP中读取String
+     *
+     * @param key 键
+     * @return 存在返回对应值，不存在返回默认值{@code null}
+     */
+    public String getString(String key) {
+        return getString(key, null);
+    }
+
+    /**
+     * SP中读取String
+     *
+     * @param key          键
+     * @param defaultValue 默认值
+     * @return 存在返回对应值，不存在返回默认值{@code defaultValue}
+     */
+    public String getString(String key, String defaultValue) {
+        return sp.getString(key, defaultValue);
+    }
+
+    /**
+     * SP中写入int类型value
+     *
+     * @param key   键
+     * @param value 值
+     */
+    public void putInt(String key, int value) {
+        editor.putInt(key, value).apply();
+    }
+
+    /**
+     * SP中读取int
+     *
+     * @param key 键
+     * @return 存在返回对应值，不存在返回默认值-1
+     */
+    public int getInt(String key) {
+        return getInt(key, -1);
+    }
+
+    /**
+     * SP中读取int
+     *
+     * @param key          键
+     * @param defaultValue 默认值
+     * @return 存在返回对应值，不存在返回默认值{@code defaultValue}
+     */
+    public int getInt(String key, int defaultValue) {
+        return sp.getInt(key, defaultValue);
+    }
+
+    /**
+     * SP中写入long类型value
+     *
+     * @param key   键
+     * @param value 值
+     */
+    public void putLong(String key, long value) {
+        editor.putLong(key, value).apply();
+    }
+
+    /**
+     * SP中读取long
+     *
+     * @param key 键
+     * @return 存在返回对应值，不存在返回默认值-1
+     */
+    public long getLong(String key) {
+        return getLong(key, -1L);
+    }
+
+    /**
+     * SP中读取long
+     *
+     * @param key          键
+     * @param defaultValue 默认值
+     * @return 存在返回对应值，不存在返回默认值{@code defaultValue}
+     */
+    public long getLong(String key, long defaultValue) {
+        return sp.getLong(key, defaultValue);
+    }
+
+    /**
+     * SP中写入float类型value
+     *
+     * @param key   键
+     * @param value 值
+     */
+    public void putFloat(String key, float value) {
+        editor.putFloat(key, value).apply();
+    }
+
+    /**
+     * SP中读取float
+     *
+     * @param key 键
+     * @return 存在返回对应值，不存在返回默认值-1
+     */
+    public float getFloat(String key) {
+        return getFloat(key, -1f);
+    }
+
+    /**
+     * SP中读取float
+     *
+     * @param key          键
+     * @param defaultValue 默认值
+     * @return 存在返回对应值，不存在返回默认值{@code defaultValue}
+     */
+    public float getFloat(String key, float defaultValue) {
+        return sp.getFloat(key, defaultValue);
+    }
+
+    /**
+     * SP中写入boolean类型value
+     *
+     * @param key   键
+     * @param value 值
+     */
+    public void putBoolean(String key, boolean value) {
+        editor.putBoolean(key, value).apply();
+    }
+
+    /**
+     * SP中读取boolean
+     *
+     * @param key 键
+     * @return 存在返回对应值，不存在返回默认值{@code false}
+     */
+    public boolean getBoolean(String key) {
+        return getBoolean(key, false);
+    }
+
+    /**
+     * SP中读取boolean
+     *
+     * @param key          键
+     * @param defaultValue 默认值
+     * @return 存在返回对应值，不存在返回默认值{@code defaultValue}
+     */
+    public boolean getBoolean(String key, boolean defaultValue) {
+        return sp.getBoolean(key, defaultValue);
+    }
+
+    /**
+     * SP中获取所有键值对
+     *
+     * @return Map对象
+     */
+    public Map<String, ?> getAll() {
+        return sp.getAll();
+    }
+
+    /**
+     * SP中移除该key
+     *
+     * @param key 键
+     */
+    public void remove(String key) {
+        editor.remove(key).apply();
+    }
+
+    /**
+     * SP中是否存在该key
+     *
+     * @param key 键
+     * @return {@code true}: 存在<br>{@code false}: 不存在
+     */
+    public boolean contains(String key) {
         return sp.contains(key);
     }
 
     /**
-     * 返回所有的键值对
-     *
-     * @param context
-     * @return
+     * SP中清除所有数据
      */
-    private static Map<String, ?> getAll(Context context,String fileName) {
-        SharedPreferences sp = context.getSharedPreferences(fileName, Context.MODE_PRIVATE);
-        return sp.getAll();
+    public void clear() {
+        editor.clear().apply();
     }
 }
