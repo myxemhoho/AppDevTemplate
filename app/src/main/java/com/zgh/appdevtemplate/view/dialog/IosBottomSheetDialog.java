@@ -1,4 +1,4 @@
-package com.zgh.appdevtemplate.view;
+package com.zgh.appdevtemplate.view.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -21,9 +21,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 仿ios的底部弹出dialog
+ *  仿ios的底部弹出dialog
  */
-public class IosSheetDialog {
+public class IosBottomSheetDialog {
     private Context context;
     private Dialog dialog;
     private TextView txt_title;
@@ -34,14 +34,14 @@ public class IosSheetDialog {
     private List<SheetItem> sheetItemList;
     private Display display;
 
-    public IosSheetDialog(Context context) {
+    public IosBottomSheetDialog(Context context) {
         this.context = context;
         WindowManager windowManager = (WindowManager) context
                 .getSystemService(Context.WINDOW_SERVICE);
         display = windowManager.getDefaultDisplay();
     }
 
-    public IosSheetDialog builder() {
+    public IosBottomSheetDialog builder() {
         // 获取Dialog布局
         View view = LayoutInflater.from(context).inflate(
                 R.layout.view_actionsheet, null);
@@ -75,19 +75,19 @@ public class IosSheetDialog {
         return this;
     }
 
-    public IosSheetDialog setTitle(String title) {
+    public IosBottomSheetDialog setTitle(String title) {
         showTitle = true;
         txt_title.setVisibility(View.VISIBLE);
         txt_title.setText(title);
         return this;
     }
 
-    public IosSheetDialog setCancelable(boolean cancel) {
+    public IosBottomSheetDialog setCancelable(boolean cancel) {
         dialog.setCancelable(cancel);
         return this;
     }
 
-    public IosSheetDialog setCanceledOnTouchOutside(boolean cancel) {
+    public IosBottomSheetDialog setCanceledOnTouchOutside(boolean cancel) {
         dialog.setCanceledOnTouchOutside(cancel);
         return this;
     }
@@ -98,7 +98,7 @@ public class IosSheetDialog {
      * @param listener
      * @return
      */
-    public IosSheetDialog addSheetItem(String strItem, SheetItemColor color,
+    public IosBottomSheetDialog addSheetItem(String strItem, SheetItemColor color,
                                           OnSheetItemClickListener listener) {
         if (sheetItemList == null) {
             sheetItemList = new ArrayList<SheetItem>();

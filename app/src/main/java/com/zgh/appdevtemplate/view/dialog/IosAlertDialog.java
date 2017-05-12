@@ -1,4 +1,4 @@
-package com.zgh.appdevtemplate.view;
+package com.zgh.appdevtemplate.view.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -18,10 +18,7 @@ import com.zgh.appdevtemplate.R;
 
 
 /**
- * Author: 姚智胜
- * Version: V1.0版本
- * Description: 仿ios的中间弹出dialog
- * Date: 2016/11/22
+ *   仿ios的中间弹出dialog
  */
 public class IosAlertDialog {
 	private Context context;
