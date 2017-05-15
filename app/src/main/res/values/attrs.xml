@@ -37,4 +37,13 @@
         <attr name="noticeTextSize" format="dimension" />
         <attr name="noticeRollingTime" format="integer" />
     </declare-styleable>
+
+    <!--带圆角的 ImageView-->
+    <declare-styleable name="RoundImageView">
+        <attr name="radius" format="dimension" />
+        <attr name="leftUpRadius" format="dimension" />
+        <attr name="rightUpRadius" format="dimension" />
+        <attr name="leftDownRadius" format="dimension" />
+        <attr name="rightDownRadius" format="dimension" />
+    </declare-styleable>
 </resources>
