@@ -35,6 +35,16 @@ public class ImageLoader {
              .into(imageView);
     }
 
+    public static void withDefault(Context context, @DrawableRes int resID, @NonNull ImageView imageView) {
+        Glide.with(context)
+             .load(resID)
+             .dontAnimate()
+             .placeholder(R.mipmap.ic_launcher)
+             .crossFade()
+             .centerCrop()
+             .into(imageView);
+    }
+
     public static void withNoDefault(Context context, @NonNull String imageUrl, @NonNull ImageView imageView) {
         Glide.with(context)
              .load(imageUrl)
@@ -47,6 +57,15 @@ public class ImageLoader {
     public static void withNoDefault(Context context, @NonNull File file, @NonNull ImageView imageView) {
         Glide.with(context)
              .load(file)
+             .dontAnimate()
+             .crossFade()
+             .centerCrop()
+             .into(imageView);
+    }
+
+    public static void withNoDefault(Context context, @DrawableRes int resID, @NonNull ImageView imageView) {
+        Glide.with(context)
+             .load(resID)
              .dontAnimate()
              .crossFade()
              .centerCrop()
@@ -66,6 +85,16 @@ public class ImageLoader {
     public static void withImage(Context context, @NonNull File file, @DrawableRes int resId, @NonNull ImageView imageView) {
         Glide.with(context)
              .load(file)
+             .dontAnimate()
+             .placeholder(resId)
+             .crossFade()
+             .centerCrop()
+             .into(imageView);
+    }
+
+    public static void withImage(Context context, @DrawableRes int res, @DrawableRes int resId, @NonNull ImageView imageView) {
+        Glide.with(context)
+             .load(res)
              .dontAnimate()
              .placeholder(resId)
              .crossFade()

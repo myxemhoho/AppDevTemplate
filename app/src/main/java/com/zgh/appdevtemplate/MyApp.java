@@ -9,34 +9,34 @@ import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.Utils;
 import com.orhanobut.logger.Logger;
 import com.zgh.appdevtemplate.activity.SplashActivity;
+import com.zgh.appdevtemplate.utils.AppUtils;
 import com.zgh.appdevtemplate.utils.LogUtil;
-
-
-import static com.bumptech.glide.gifdecoder.GifHeaderParser.TAG;
+import com.zgh.appdevtemplate.utils.SPUtils;
 
 /**
  * Created by ZGH on 2017/4/17.
  */
 
-public class MyApplication extends Application {
+public class MyApp extends Application {
     //标志：确保方法只运行一次
     private boolean log_on = true;
     private boolean isDebug = true;
 
     PendingIntent restartIntent;
-    private Context mContext;
+    private static Context mContext;
+    public static SPUtils  mySP;
 
     @Override
     public void onCreate() {
         super.onCreate();
 
         mContext = getApplicationContext();
-        //极光推送初始化
-        LogUtils.d(TAG, "[MyApplication] onCreate");
+
         // Logger初始化配置
         Logger.init("凯捷").methodCount(1).methodOffset(1).hideThreadInfo();
-        //Utils库初始化
+        //Utils库初始化以及初始化 SPUtils 和 SP 文件
         Utils.init(mContext);
+        mySP = new SPUtils(AppUtils.getAppName(mContext));
 
         if (log_on) {
             log_on = false;
@@ -53,6 +53,10 @@ public class MyApplication extends Application {
                                                       intent, Intent.FLAG_ACTIVITY_NEW_TASK);
             Thread.setDefaultUncaughtExceptionHandler(restartHandler); // 程序崩溃时触发线程
         }
+    }
+
+    public static Context getContext() {
+        return mContext;
     }
 
     public Thread.UncaughtExceptionHandler restartHandler = new Thread.UncaughtExceptionHandler() {
