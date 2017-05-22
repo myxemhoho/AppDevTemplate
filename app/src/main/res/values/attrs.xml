@@ -1,23 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <attr name="leftIbtn" format="reference"/>
-    <attr name="tabLayout" format="reference"/>
-    <attr name="rightIbtn" format="reference"/>
-    <attr name="leftTv" format="string"/>
-    <attr name="leftTv1" format="string"/>
-    <attr name="centerTv" format="string"/>
-    <attr name="rightTv" format="string"/>
-    <attr name="rightTv1" format="string"/>
+
     <declare-styleable name="TitleView">
-        <attr name="leftIbtn"/>
-        <attr name="tabLayout"/>
-        <attr name="rightIbtn"/>
-        <attr name="leftTv"/>
-        <attr name="leftTv1"/>
-        <attr name="centerTv"/>
-        <attr name="rightTv"/>
-        <attr name="rightTv1"/>
+        <attr name="leftIbtn" format="reference"/>
+        <attr name="tabLayout" format="reference"/>
+        <attr name="rightIbtn" format="reference"/>
+        <attr name="rightSecondIbtn" format="reference"/>
+        <attr name="centerIbtn" format="reference"/>
+        <attr name="leftTv" format="string"/>
+        <attr name="leftTv1" format="string"/>
+        <attr name="centerTv" format="string"/>
+        <attr name="rightTv" format="string"/>
+        <attr name="rightTv1" format="string"/>
     </declare-styleable>
 
     <!--可调节图片大小的单选按钮-->

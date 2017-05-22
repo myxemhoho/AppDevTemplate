@@ -302,7 +302,7 @@ public class NoticeTextView extends TextSwitcher implements ViewSwitcher.ViewFac
      * 定义点击接口
      */
     public interface OnItemClick {
-        public void Click(int index);
+        void Click(int index);
     }
 
     public void setOnItemClick(OnItemClick onItemClick) {

@@ -18,16 +18,14 @@ import com.zgh.appdevtemplate.R;
 
 /**
  * 自定义标题栏
- *
- * @author Administrator
  */
 
 public class TitleView extends LinearLayout implements OnClickListener {
     private LinearLayout mLinearLayout;
     private TabLayout    tabLayout;
     private TextView     left_tv, left_tv1, center_tv, right_tv, right_tv1;
-    private ImageButton left_ibtn, right_ibtn;
-    private Drawable leftDrawable, rightDrawable;
+    private ImageButton left_ibtn, right_ibtn,rightSecond_ibtn,center_ibtn;
+    private Drawable leftDrawable, rightDrawable,rightSecondDrawable,centerDrawable;
     private String leftText, centerText, rightText;
 
     private TitleClickListener mClickListener;
@@ -58,10 +56,14 @@ public class TitleView extends LinearLayout implements OnClickListener {
         tabLayout = (TabLayout) mLinearLayout.findViewById(R.id.tabLayout_titleView);
         left_ibtn = (ImageButton) mLinearLayout.findViewById(R.id.ibtn_left_titleView);
         right_ibtn = (ImageButton) mLinearLayout.findViewById(R.id.ibtn_right_titleView);
+        rightSecond_ibtn = (ImageButton) mLinearLayout.findViewById(R.id.ibtn_right_second);
+        center_ibtn = (ImageButton) mLinearLayout.findViewById(R.id.ibtn_center);
+
         left_tv.setOnClickListener(this);
         right_tv.setOnClickListener(this);
         left_ibtn.setOnClickListener(this);
         right_ibtn.setOnClickListener(this);
+        rightSecond_ibtn.setOnClickListener(this);
         android.view.ViewGroup.LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         this.addView(mLinearLayout, params);
         readAttrs(context, attrs);
@@ -87,6 +89,21 @@ public class TitleView extends LinearLayout implements OnClickListener {
                         right_ibtn.setVisibility(View.VISIBLE);
                         right_tv.setVisibility(View.GONE);
                         right_ibtn.setImageDrawable(rightDrawable);
+                    }
+                    break;
+                case R.styleable.TitleView_centerIbtn:
+                    centerDrawable = types.getDrawable(attr);
+                    if (centerDrawable != null) {
+                        center_ibtn.setVisibility(VISIBLE);
+                        center_tv.setVisibility(GONE);
+                        center_ibtn.setImageDrawable(centerDrawable);
+                    }
+                    break;
+                case R.styleable.TitleView_rightSecondIbtn:
+                    rightSecondDrawable = types.getDrawable(attr);
+                    if (rightSecondDrawable != null) {
+                        rightSecond_ibtn.setVisibility(VISIBLE);
+                        rightSecond_ibtn.setImageDrawable(rightSecondDrawable);
                     }
                     break;
                 case R.styleable.TitleView_leftTv:
@@ -250,6 +267,12 @@ public class TitleView extends LinearLayout implements OnClickListener {
         right_ibtn.setImageResource(resId);
     }
 
+    // 设置右边第二按钮图片
+    public void setRightSecondImage(int resId) {
+        rightSecond_ibtn.setVisibility(View.VISIBLE);
+        rightSecond_ibtn.setImageResource(resId);
+    }
+
     //
     public LinearLayout getmLinearLayout() {
         return mLinearLayout;
@@ -298,6 +321,16 @@ public class TitleView extends LinearLayout implements OnClickListener {
     //
     public ImageButton getRight_ibtn() {
         return right_ibtn;
+    }
+
+    //
+    public ImageButton getRightSecond_ibtn() {
+        return rightSecond_ibtn;
+    }
+
+    //
+    public ImageButton getCenter_ibtn() {
+        return center_ibtn;
     }
 
     public TabLayout getTabLayout() {

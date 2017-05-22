@@ -30,7 +30,7 @@ public class AdaptiveWebView extends WebView {
     private OnWebViewListener onWebViewListener;
 
     public interface OnWebViewListener {
-        public void WebViewOnProgressChanged(WebView view, int newProgress);
+        void WebViewOnProgressChanged(WebView view, int newProgress);
     }
 
     public void setOnWebViewListener(OnWebViewListener onWebViewListener) {
@@ -167,7 +167,7 @@ public class AdaptiveWebView extends WebView {
         try {
             Class<?> c = Class.forName("android.webkit.WebSettingsClassic");
             if (null != c) {
-                Method tt = c.getMethod("setPageCacheCapacity", new Class[]{int.class});
+                Method tt = c.getMethod("setPageCacheCapacity", int.class);
                 if (null != tt) {
                     tt.invoke(webSettings, 5);
                 }

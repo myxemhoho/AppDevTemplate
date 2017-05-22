@@ -11,10 +11,7 @@ import java.util.ListIterator;
 import java.util.Stack;
 
 /**
- * Author: 姚智胜
- * Version: V1.0版本
- * Description: activity栈管理器
- * Date: 2017/04/22.
+ *  activity栈管理器
  */
 
 public class ActivityStackManager {
