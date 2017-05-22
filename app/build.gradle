@@ -13,12 +13,52 @@ android {
     }
 
 
-    buildTypes {
-        release {
-            minifyEnabled true
-            shrinkResources true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    //todo 换成自己项目的签名文件和信息
+    signingConfigs {
+        debug {
+//            storeFile file("/home/lippi/.android/debug.keystore")
         }
+        relealse {
+            //这样写需要把 key 文件放在 app 目录下
+//            storeFile file("mustbuy_key.jks")
+//            storePassword "android"
+//            keyAlias "mustbuy"
+//            keyPassword "android"
+        }
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+        }
+        release {
+            //Zipalign优化
+            zipAlignEnabled true
+            minifyEnabled false
+            shrinkResources minifyEnabled
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //签名
+            signingConfig signingConfigs.relealse
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    def outputFile = output.outputFile
+                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                        // todo 输出apk名称，换成自己想要的 APK 的名字
+                        def fileName = "mustbuy_v${defaultConfig.versionName}.apk"
+                        output.outputFile = new File(outputFile.parent, fileName)
+                    }
+                }
+            }
+        }
+    }
+
+    lintOptions {
+        //关闭 Lint 检查的错误和警告提示
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
     }
 }
 
