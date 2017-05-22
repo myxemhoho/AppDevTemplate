@@ -14,6 +14,7 @@ import com.zgh.appdevtemplate.R;
 import com.zgh.appdevtemplate.base.BaseActivity;
 import com.zgh.appdevtemplate.constant.Urls;
 import com.zgh.appdevtemplate.event.EventCenter;
+import com.zgh.appdevtemplate.fragment.MainFragment;
 import com.zgh.appdevtemplate.updata.UpdataService;
 import com.zgh.appdevtemplate.utils.AppUtils;
 
@@ -22,9 +23,10 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initContentView(Bundle savedInstanceState) {
         setContentView(R.layout.activity_main);
-//        if (savedInstanceState == null) {
-//            loadRootFragment(R.id.fl_mainActivity, MainFragment.newInstance());
-//        }
+        if (savedInstanceState == null) {
+            loadRootFragment(R.id.fl_mainActivity, MainFragment.newInstance());
+        }
+
         checkOption();
         checkUpdata();
     }

@@ -1,6 +1,7 @@
 package com.zgh.appdevtemplate.fragment;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 
 import com.zgh.appdevtemplate.R;
 import com.zgh.appdevtemplate.base.BaseFragment;
+import com.zgh.appdevtemplate.event.EventCenter;
 import com.zgh.appdevtemplate.view.BottomBar;
 import com.zgh.appdevtemplate.view.BottomBarTab;
 
@@ -35,8 +37,8 @@ public class MainFragment extends BaseFragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    protected View initContentView(LayoutInflater inflater,
+            @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
         //初始化四个 fragment 对应底部的四个 tab
         if (savedInstanceState == null) {
@@ -58,6 +60,21 @@ public class MainFragment extends BaseFragment {
 
         initBottomNav(view);
         return view;
+    }
+
+    @Override
+    protected void getBundleExtras(Bundle arguments) {
+
+    }
+
+    @Override
+    protected void initView(View view) {
+
+    }
+
+    @Override
+    protected void onEventComing(EventCenter event) {
+
     }
 
     //底部导航栏及其事件

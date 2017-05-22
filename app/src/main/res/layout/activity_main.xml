@@ -11,9 +11,8 @@
 
     <com.zgh.appdevtemplate.view.TitleView
         android:id="@id/titleView"
-        android:visibility="gone"
+        app:leftIbtn="@mipmap/ic_back"
         android:layout_width = "match_parent"
         android:layout_height = "wrap_content">
-
     </com.zgh.appdevtemplate.view.TitleView>
 </FrameLayout>

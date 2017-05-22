@@ -48,13 +48,14 @@ public abstract class BaseActivity extends SupportActivity {
     }
 
     /**
-     * 初始化 titleView，继承 BaseActivity 的 Activity 如果是作为界面则必须在 XML 中声明 titleView
+     * 初始化 titleView，继承 BaseActivity 的 Activity 必须在 XML 中声明 titleView
      * 且 id 为 titleView，如果不需要 titleView，则可以设置为隐藏，
-     * 如果 Activity 是作为 Fragment 容器，则可以不用声明 titleView。
      */
     private void initTitleView() {
         mTitleView = (TitleView) findViewById(R.id.titleView);
-        titleLeftBtnEvent();
+        if (mTitleView != null) {
+            titleLeftBtnEvent();
+        }
     }
 
     /**
