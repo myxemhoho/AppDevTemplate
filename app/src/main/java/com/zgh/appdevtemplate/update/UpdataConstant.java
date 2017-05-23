@@ -1,9 +1,9 @@
-package com.zgh.appdevtemplate.updata;
+package com.zgh.appdevtemplate.update;
 
 import android.os.Environment;
 
 import com.zgh.appdevtemplate.MyApp;
-import com.zgh.appdevtemplate.utils.AppUtils;
+import com.zgh.appdevtemplate.util.AppUtils;
 
 import java.io.File;
 

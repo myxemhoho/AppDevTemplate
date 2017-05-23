@@ -9,15 +9,12 @@ import android.widget.LinearLayout;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.zgh.appdevtemplate.utils.DensityUtil;
+import com.zgh.appdevtemplate.util.DensityUtil;
 
 import java.util.List;
 
 /**
- * @ClassName MultiImageView.java
- * @author shoyu
- * @version 
- * @Description: 显示1~N张图片的View
+ *  显示1~N张图片的View
  */
 
 public class MultiImageView extends LinearLayout {

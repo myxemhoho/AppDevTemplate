@@ -1,4 +1,4 @@
-package com.zgh.appdevtemplate.utils;
+package com.zgh.appdevtemplate.util;
 
 import android.app.Activity;
 import android.app.ActivityManager;

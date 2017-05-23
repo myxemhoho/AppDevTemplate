@@ -1,4 +1,4 @@
-package com.zgh.appdevtemplate.utils;
+package com.zgh.appdevtemplate.util;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

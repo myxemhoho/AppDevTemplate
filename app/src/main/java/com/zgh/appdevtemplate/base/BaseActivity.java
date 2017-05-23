@@ -10,7 +10,7 @@ import android.view.View;
 import com.jaeger.library.StatusBarUtil;
 import com.zgh.appdevtemplate.R;
 import com.zgh.appdevtemplate.event.EventCenter;
-import com.zgh.appdevtemplate.utils.ActivityStackManager;
+import com.zgh.appdevtemplate.util.ActivityStackManager;
 import com.zgh.appdevtemplate.view.TitleView;
 
 import org.greenrobot.eventbus.EventBus;

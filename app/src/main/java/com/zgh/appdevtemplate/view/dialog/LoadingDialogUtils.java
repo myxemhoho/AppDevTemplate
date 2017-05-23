@@ -2,7 +2,7 @@ package com.zgh.appdevtemplate.view.dialog;
 
 import android.util.Log;
 
-import com.zgh.appdevtemplate.utils.ActivityStackManager;
+import com.zgh.appdevtemplate.util.ActivityStackManager;
 
 
 /**

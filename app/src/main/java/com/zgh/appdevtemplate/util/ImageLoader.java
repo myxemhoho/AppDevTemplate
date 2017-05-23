@@ -1,4 +1,4 @@
-package com.zgh.appdevtemplate.utils;
+package com.zgh.appdevtemplate.util;
 
 import android.content.Context;
 import android.support.annotation.DrawableRes;

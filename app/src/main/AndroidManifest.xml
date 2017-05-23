@@ -24,7 +24,7 @@
         android:supportsRtl = "true"
         android:theme = "@style/AppTheme">
         <service
-            android:name = ".updata.UpdataService"
+            android:name = ".update.UpdataService"
             android:exported = "false" />
 
         <activity android:name = ".activity.MainActivity">

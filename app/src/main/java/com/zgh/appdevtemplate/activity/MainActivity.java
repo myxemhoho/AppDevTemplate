@@ -15,8 +15,8 @@ import com.zgh.appdevtemplate.base.BaseActivity;
 import com.zgh.appdevtemplate.constant.Urls;
 import com.zgh.appdevtemplate.event.EventCenter;
 import com.zgh.appdevtemplate.fragment.MainFragment;
-import com.zgh.appdevtemplate.updata.UpdataService;
-import com.zgh.appdevtemplate.utils.AppUtils;
+import com.zgh.appdevtemplate.update.UpdataService;
+import com.zgh.appdevtemplate.util.AppUtils;
 
 public class MainActivity extends BaseActivity {
 
@@ -28,7 +28,7 @@ public class MainActivity extends BaseActivity {
         }
 
         checkOption();
-        checkUpdata();
+        checkUpdate();
     }
 
     @Override
@@ -46,16 +46,16 @@ public class MainActivity extends BaseActivity {
 
     }
 
-    private void checkUpdata() {
+    private void checkUpdate() {
         int localVer = AppUtils.getAppVersionCode(this);
         // TODO: 2017/5/18  换成线上的版本号
         int remoteVer = 2;
         if (remoteVer > localVer) {
-            updata();
+            update();
         }
     }
 
-    private void updata() {
+    private void update() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("发现新版本，是否更新");
         builder.setCancelable(false);

@@ -1,4 +1,4 @@
-package com.zgh.appdevtemplate.updata;
+package com.zgh.appdevtemplate.update;
 
 import android.util.Log;
 

@@ -9,9 +9,9 @@ import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.Utils;
 import com.orhanobut.logger.Logger;
 import com.zgh.appdevtemplate.activity.SplashActivity;
-import com.zgh.appdevtemplate.utils.AppUtils;
-import com.zgh.appdevtemplate.utils.LogUtil;
-import com.zgh.appdevtemplate.utils.SPUtils;
+import com.zgh.appdevtemplate.util.AppUtils;
+import com.zgh.appdevtemplate.util.LogUtil;
+import com.zgh.appdevtemplate.util.SPUtils;
 
 /**
  * Created by ZGH on 2017/4/17.

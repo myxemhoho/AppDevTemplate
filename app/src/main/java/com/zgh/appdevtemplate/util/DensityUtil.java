@@ -1,12 +1,6 @@
-package com.zgh.appdevtemplate.utils;
+package com.zgh.appdevtemplate.util;
 
 import android.content.Context;
-
-/**
- * 创建人：姚智胜
- * 创建时间： 2016/11/7.
- * 简介：
- */
 
 public class DensityUtil {
     public DensityUtil() {

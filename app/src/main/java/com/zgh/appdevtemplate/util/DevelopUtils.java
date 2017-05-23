@@ -1,14 +1,21 @@
-package com.zgh.appdevtemplate.utils;
+package com.zgh.appdevtemplate.util;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.ColorInt;
 import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
+import android.text.SpannableString;
+import android.text.Spanned;
 import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * 开发中需要用到的工具类
@@ -133,5 +140,22 @@ public class DevelopUtils {
                 return "";
             }
         }
+    }
+
+    /**
+     * 高亮字符串中的某部分文字
+     */
+    public static CharSequence highLightString(String originStr, String highLightStr,
+            @ColorInt int highLightColor) {
+
+        SpannableString ss = new SpannableString(originStr);
+        Pattern p = Pattern.compile(highLightStr);
+        Matcher m = p.matcher(ss);
+        while (m.find()) {
+            ss.setSpan(new ForegroundColorSpan(highLightColor), m.start(), m.end(),
+                       Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+
+        return ss;
     }
 }
