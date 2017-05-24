@@ -8,14 +8,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.chad.library.adapter.base.BaseViewHolder;
 import com.zgh.appdevtemplate.R;
-import com.zgh.appdevtemplate.base.BaseFragment;
+import com.zgh.appdevtemplate.base.BaseListFragment;
 import com.zgh.appdevtemplate.event.EventCenter;
+import com.zgh.appdevtemplate.util.LogUtil;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BlankFragment extends BaseFragment {
+public class BlankFragment extends BaseListFragment<String> {
 
 
     public BlankFragment() {
@@ -41,7 +45,40 @@ public class BlankFragment extends BaseFragment {
     }
 
     @Override
-    protected void initView(View view) {
+    protected void initItemLayout() {
+        setItemLayout(R.layout.item_base_recyclerview);
+    }
+
+    @Override
+    protected void initRecyclerView() {
+        setListType(LINEAR_LAYOUT, true);
+        ArrayList<String> data = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            data.add("" + i);
+        }
+
+        mAdapter.addData(data);
+        LogUtil.d(mAdapter);
+        LogUtil.d(mRecyclerView);
+    }
+
+    @Override
+    protected void initHeaderView(View headerView) {
+
+    }
+
+    @Override
+    protected void onRefreshListener() {
+
+    }
+
+    @Override
+    protected void onLoadMoreLister() {
+
+    }
+
+    @Override
+    protected void MyHolder(BaseViewHolder baseViewHolder, String s) {
 
     }
 

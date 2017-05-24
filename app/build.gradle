@@ -12,7 +12,6 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
-
     //todo 换成自己项目的签名文件和信息
     signingConfigs {
         debug {

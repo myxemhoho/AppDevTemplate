@@ -11,4 +11,6 @@
     <!--需要先在布局文件中声明这个控件，并且要用同一个 id，不然程序会报错-->
     <!--此控件的公共逻辑写在 Base 类中，逻辑有变化的重写相应方法即可-->
     <item name = "titleView" type="id"/>
+    <item name = "recyclerView" type="id"/>
+    <item name = "swipeRefresh" type="id"/>
 </resources>

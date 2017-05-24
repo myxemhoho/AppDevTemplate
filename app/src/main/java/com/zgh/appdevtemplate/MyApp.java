@@ -33,7 +33,7 @@ public class MyApp extends Application {
         mContext = getApplicationContext();
 
         // Logger初始化配置
-        Logger.init("凯捷").methodCount(1).methodOffset(1).hideThreadInfo();
+        Logger.init("MyAPP").methodCount(1).methodOffset(1).hideThreadInfo();
         //Utils库初始化以及初始化 SPUtils 和 SP 文件
         Utils.init(mContext);
         mySP = new SPUtils(AppUtils.getAppName(mContext));
