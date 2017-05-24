@@ -21,12 +21,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 普通list的baseFragment，封装一些公共逻辑，子类只要实现部分抽象方法就可以完成页面
+ * 普通list的 BaseActivity,封装一些公共逻辑，子类只要实现部分抽象方法就可以完成页面
  */
-public abstract class BaseListFragment<T> extends BaseFragment
-        implements BaseQuickAdapter.RequestLoadMoreListener, SwipeRefreshLayout.OnRefreshListener {
-    private static final String TAG = "BaseListFragment";
 
+public abstract class BaseListActivity<T> extends BaseActivity
+        implements SwipeRefreshLayout.OnRefreshListener, BaseQuickAdapter.RequestLoadMoreListener {
     protected static final int     LINEAR_LAYOUT         = 0;//普通list布局
     protected static final int     GRID_LAYOUT           = 1;//grid布局
     protected static final int     STAGGERED_GRID_LAYOUT = 2;//瀑布流布局
@@ -38,9 +37,10 @@ public abstract class BaseListFragment<T> extends BaseFragment
     protected SwipeRefreshLayout      mRefreshLayout;
     protected BaseRecyclerViewAdapter mAdapter;
 
-    protected void initView(View view) {
-        mRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefresh);
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+    @Override
+    protected void initView() {
+        mRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefresh);
+        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
 
         initItemLayout();
         if (-1 == itemLayoutResId) {
@@ -80,7 +80,7 @@ public abstract class BaseListFragment<T> extends BaseFragment
     /**
      * 初始化 recyclerView 各种状态处理，在这个方法里处理的是 recyclerView 的所有的初始化，
      * 包括对他的展示形式，是list或grid或瀑布流，是否开启上啦加载，是否自定义加载动画，
-     * 开启下拉刷新，给下拉刷新设置颜色，添加 headerView，给 adapter 设置数据等
+     * 开启下拉刷新，给下拉刷新设置颜色，添加 headerView，初始化 adapter 数据等
      */
     protected abstract void initRecyclerView();
 
@@ -189,14 +189,14 @@ public abstract class BaseListFragment<T> extends BaseFragment
             switch (listType) {
                 case LINEAR_LAYOUT:
                     //设置布局管理器
-                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
                     linearLayoutManager.setOrientation(
                             isVertical ? LinearLayoutManager.VERTICAL : LinearLayoutManager.HORIZONTAL);
                     mRecyclerView.setLayoutManager(linearLayoutManager);
                     break;
                 case GRID_LAYOUT:
                     GridLayoutManager gridLayoutManager =
-                            new GridLayoutManager(getContext(), columns);
+                            new GridLayoutManager(this, columns);
                     gridLayoutManager.setOrientation(
                             isVertical ? GridLayoutManager.VERTICAL : GridLayoutManager.HORIZONTAL);
                     mRecyclerView.setLayoutManager(gridLayoutManager);
@@ -210,7 +210,7 @@ public abstract class BaseListFragment<T> extends BaseFragment
                     break;
                 default:
                     //设置布局管理器
-                    LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+                    LinearLayoutManager layoutManager = new LinearLayoutManager(this);
                     layoutManager.setOrientation(
                             isVertical ? LinearLayoutManager.VERTICAL : LinearLayoutManager.HORIZONTAL);
                     mRecyclerView.setLayoutManager(layoutManager);
@@ -235,5 +235,4 @@ public abstract class BaseListFragment<T> extends BaseFragment
             MyHolder(baseViewHolder, t);
         }
     }
-
 }

@@ -67,6 +67,7 @@ public class ListFragment extends BaseListFragment<String> {
     @Override
     protected void initItemLayout() {
         setItemLayout(R.layout.item_base_recyclerview);
+        setListType(GRID_LAYOUT, true, 3);
     }
 
     @Override
@@ -78,7 +79,7 @@ public class ListFragment extends BaseListFragment<String> {
 
         openRefresh(R.color.md_deep_orange_600, R.color.md_deep_orange_800,
                     R.color.md_deep_orange_A100, R.color.md_deep_orange_A400);
-        setListType(GRID_LAYOUT,true,3);
+
         setHeaderView(getActivity(), R.layout.search_view);
         mAdapter.addData(data);
     }
@@ -90,6 +91,6 @@ public class ListFragment extends BaseListFragment<String> {
 
     @Override
     protected void MyHolder(BaseViewHolder baseViewHolder, String s) {
-
+        baseViewHolder.setText(R.id.tv_item, s);
     }
 }

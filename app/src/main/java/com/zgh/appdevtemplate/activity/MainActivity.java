@@ -49,7 +49,7 @@ public class MainActivity extends BaseActivity {
     private void checkUpdate() {
         int localVer = AppUtils.getAppVersionCode(this);
         // TODO: 2017/5/18  换成线上的版本号
-        int remoteVer = 2;
+        int remoteVer = 0;
         if (remoteVer > localVer) {
             update();
         }
