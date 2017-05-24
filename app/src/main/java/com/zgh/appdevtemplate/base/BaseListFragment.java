@@ -46,7 +46,7 @@ public abstract class BaseListFragment<T> extends BaseFragment
             throw new RuntimeException("itemLayoutResId is null!");
         }
         mAdapter = new BaseRecyclerViewAdapter(itemLayoutResId, new ArrayList<T>());
-        chooseListType(LINEAR_LAYOUT, true, 1);
+//        chooseListType(LINEAR_LAYOUT, true, 1);
         initRecyclerView();
         if (mHeaderView != null) {
             initHeaderView(mHeaderView);
@@ -68,13 +68,6 @@ public abstract class BaseListFragment<T> extends BaseFragment
     }
 
     /**
-     * 初始化 recyclerView 各种状态处理，在这个方法里处理的是 recyclerView 的所有的初始化，
-     * 包括对他的展示形式，是list或grid或瀑布流，是否开启上啦加载，是否自定义加载动画，
-     * 开启下拉刷新，给下拉刷新设置颜色，添加 headerView，给 adapter 设置数据等
-     */
-    protected abstract void initRecyclerView();
-
-    /**
      * 设置布局类型和方向，子类如果不调用此方法则默认为线性布局，垂直排列
      */
     protected void setListType(int type, boolean isVertical) {
@@ -88,6 +81,13 @@ public abstract class BaseListFragment<T> extends BaseFragment
         //        mIsVertical = isVertical;
         chooseListType(type, isVertical, columns);
     }
+
+    /**
+     * 初始化 recyclerView 各种状态处理，在这个方法里处理的是 recyclerView 的所有的初始化，
+     * 包括对他的展示形式，是list或grid或瀑布流，是否开启上啦加载，是否自定义加载动画，
+     * 开启下拉刷新，给下拉刷新设置颜色，添加 headerView，给 adapter 设置数据等
+     */
+    protected abstract void initRecyclerView();
 
     /**
      * 添加 headerView
@@ -107,18 +107,11 @@ public abstract class BaseListFragment<T> extends BaseFragment
     /**
      * 开启下拉刷新并设置刷新颜色
      */
-    protected void openRefresh() {
+    protected void openRefresh(@ColorRes int... colorResIds) {
         if (mRefreshLayout != null) {
-            setRefreshColor(R.color.colorPrimary, R.color.colorAccent);
+            mRefreshLayout.setColorSchemeResources(colorResIds);
             mRefreshLayout.setOnRefreshListener(this);
         }
-    }
-
-    /**
-     * 为 SwipeRefresh 设置颜色，如果不设置则默认使用主题颜色
-     */
-    protected void setRefreshColor(@ColorRes int... colorResIds) {
-        mRefreshLayout.setColorSchemeResources(colorResIds);
     }
 
     /**

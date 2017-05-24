@@ -76,9 +76,8 @@ public class ListFragment extends BaseListFragment<String> {
             data.add("" + i);
         }
 
-        openRefresh();
-        setRefreshColor(R.color.md_deep_orange_600, R.color.md_deep_orange_800,
-                        R.color.md_deep_orange_A100, R.color.md_deep_orange_A400);
+        openRefresh(R.color.md_deep_orange_600, R.color.md_deep_orange_800,
+                    R.color.md_deep_orange_A100, R.color.md_deep_orange_A400);
         setListType(GRID_LAYOUT,true,3);
         setHeaderView(getActivity(), R.layout.search_view);
         mAdapter.addData(data);
