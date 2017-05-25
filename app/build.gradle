@@ -17,7 +17,7 @@ android {
         debug {
 //            storeFile file("/home/lippi/.android/debug.keystore")
         }
-        relealse {
+        release {
             //这样写需要把 key 文件放在 app 目录下
 //            storeFile file("mustbuy_key.jks")
 //            storePassword "android"
@@ -38,7 +38,7 @@ android {
             shrinkResources minifyEnabled
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             //签名
-            signingConfig signingConfigs.relealse
+            signingConfig signingConfigs.release
             applicationVariants.all { variant ->
                 variant.outputs.each { output ->
                     def outputFile = output.outputFile
@@ -71,11 +71,12 @@ dependencies {
     compile 'com.android.support:design:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.12'
+    compile 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
     compile 'com.loopj.android:android-async-http:1.4.9'
     compile 'com.jaeger.statusbaruitl:library:1.3.6'
     compile 'com.github.bumptech.glide:glide:3.7.0'
-    compile 'com.google.code.gson:gson:2.8.0'
     compile 'me.yokeyword:fragmentation:0.10.3'
+    compile 'com.google.code.gson:gson:2.8.0'
     compile 'org.greenrobot:eventbus:3.0.0'
     compile 'com.blankj:utilcode:1.3.7'
     compile 'com.orhanobut:logger:1.15'
