@@ -10,15 +10,20 @@ import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 
+import com.blankj.utilcode.util.KeyboardUtils;
+import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
+import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.zgh.appdevtemplate.R;
 import com.zgh.appdevtemplate.base.BaseActivity;
 import com.zgh.appdevtemplate.constant.Urls;
 import com.zgh.appdevtemplate.event.EventCenter;
-import com.zgh.appdevtemplate.fragment.MainFragment;
+import com.zgh.appdevtemplate.fragment.ListFragment;
+import com.zgh.appdevtemplate.model.TabEntity;
 import com.zgh.appdevtemplate.update.UpdataService;
 import com.zgh.appdevtemplate.util.AppUtils;
 
@@ -39,60 +44,60 @@ public class MainActivity extends BaseActivity {
     protected void initContentView(Bundle savedInstanceState) {
         setContentView(R.layout.activity_main);
         //使用 ViewPager 及 Fragment 实现项目整体架构,与下面 BottomBar 的方式二选一
-//        viewPagerWithFragment();
+        viewPagerWithFragment();
         //使用 BottomBar 及 Fragment 实现项目整体架构
-        if (savedInstanceState == null) {
-            loadRootFragment(R.id.fl_mainActivity, MainFragment.newInstance());
-        }
+//        if (savedInstanceState == null) {
+//            loadRootFragment(R.id.fl_mainActivity, MainFragment.newInstance());
+//        }
 
         checkOption();
         checkUpdate();
     }
 
     private void viewPagerWithFragment() {
-//        for (int i = 0; i < mTitles.length; i++) {
-//            mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]));
-//            mFragments.add(ListFragment.newInstance());
-//        }
-//        final CommonTabLayout tabLayout = (CommonTabLayout) findViewById(R.id.tabLayout);
-//        tabLayout.setTabData(mTabEntities);
-//
-//        final ViewPager viewPager = (ViewPager) findViewById(R.id.vp_main);
-//        viewPager.setAdapter(new MyPageAdapter(getSupportFragmentManager()));
-//
-//        tabLayout.setOnTabSelectListener(new OnTabSelectListener() {
-//            @Override
-//            public void onTabSelect(int position) {
-//                viewPager.setCurrentItem(position);
-//            }
-//
-//            @Override
-//            public void onTabReselect(int position) {
-//
-//            }
-//        });
-//
-//        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-//            @Override
-//            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-//
-//            }
-//
-//            @Override
-//            public void onPageSelected(int position) {
-//                tabLayout.setCurrentTab(position);
-//            }
-//
-//            @Override
-//            public void onPageScrollStateChanged(int state) {
-//
-//            }
-//        });
+        for (int i = 0; i < mTitles.length; i++) {
+            mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]));
+            mFragments.add(ListFragment.newInstance());
+        }
+        final CommonTabLayout tabLayout = (CommonTabLayout) findViewById(R.id.tabLayout);
+        tabLayout.setTabData(mTabEntities);
+
+        final ViewPager viewPager = (ViewPager) findViewById(R.id.vp_main);
+        viewPager.setAdapter(new MyPageAdapter(getSupportFragmentManager()));
+
+        tabLayout.setOnTabSelectListener(new OnTabSelectListener() {
+            @Override
+            public void onTabSelect(int position) {
+                viewPager.setCurrentItem(position);
+            }
+
+            @Override
+            public void onTabReselect(int position) {
+
+            }
+        });
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                tabLayout.setCurrentTab(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
     @Override
     protected void initView() {
-
+        KeyboardUtils.clickBlankArea2HideSoftInput();
     }
 
     @Override
