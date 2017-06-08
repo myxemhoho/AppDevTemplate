@@ -90,7 +90,7 @@ public class ListFragment extends BaseListFragment<String> {
     }
 
     @Override
-    protected void MyHolder(BaseViewHolder baseViewHolder, String s) {
+    protected void myHolder(BaseViewHolder baseViewHolder, String s) {
         baseViewHolder.setText(R.id.tv_item, s);
     }
 }

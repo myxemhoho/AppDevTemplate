@@ -220,7 +220,7 @@ public class ActivityStackManager {
     /**
      * 退出应用程序
      */
-    public void AppExit(Context context) {
+    public void appExit(Context context) {
         killAllActivity();
         Process.killProcess(Process.myPid());
     }

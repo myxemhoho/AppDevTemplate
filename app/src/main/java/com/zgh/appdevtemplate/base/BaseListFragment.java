@@ -222,7 +222,7 @@ public abstract class BaseListFragment<T> extends BaseFragment
     /**
      * adapter内的处理
      */
-    protected abstract void MyHolder(BaseViewHolder baseViewHolder, T t);
+    protected abstract void myHolder(BaseViewHolder baseViewHolder, T t);
 
     public class BaseRecyclerViewAdapter extends BaseQuickAdapter<T, BaseViewHolder> {
 
@@ -232,7 +232,7 @@ public abstract class BaseListFragment<T> extends BaseFragment
 
         @Override
         protected void convert(BaseViewHolder baseViewHolder, T t) {
-            MyHolder(baseViewHolder, t);
+            myHolder(baseViewHolder, t);
         }
     }
 

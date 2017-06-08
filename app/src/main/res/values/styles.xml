@@ -7,6 +7,8 @@
         <item name = "colorPrimary">@color/colorPrimary</item>
         <item name = "colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name = "colorAccent">@color/colorAccent</item>
+        <!--删除默认的界面背景-->
+        <!--<item name = "android:windowBackground">@null</item>-->
     </style>
 
     <!-- 自定义仿IOS的ActionSheet底部Dialog的样式 ，有模糊效果 -->

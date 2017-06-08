@@ -78,7 +78,7 @@ public class BlankFragment extends BaseListFragment<String> {
     }
 
     @Override
-    protected void MyHolder(BaseViewHolder baseViewHolder, String s) {
+    protected void myHolder(BaseViewHolder baseViewHolder, String s) {
 
     }
 
